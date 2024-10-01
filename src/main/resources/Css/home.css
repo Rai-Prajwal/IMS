@@ -1,0 +1,102 @@
+.home_container{
+	-fx-background-color: linear-gradient(to right, #74ebd5, #ACB6E5);
+}
+.username{
+	-fx-font-weight: bold;
+	-fx-font-size: 2em;
+	-fx-fill: #FFFFFF;
+}
+.date_lbl{
+	-fx-font-weight: bold;
+	-fx-font-size: 2em;
+	-fx-text-fill: #FFFFFF;	
+}
+.summary_tittle{
+	-fx-font-weight: bold;
+	-fx-font-size: 1.5em;
+	-fx-fill: #FFFFFF;		
+}
+.summary_box{
+	-fx-border-radius: 15;
+	-fx-border-width: 10;
+	-fx-font-family: 'Arial';
+	-fx-background-color: #FFFFFF;
+	-fx-background-radius: 15;
+	-fx-padding: 10;
+	-fx-spacing: 10;
+}
+.summary_box FontAwesomeIconView{
+	-fx-fill: #FFFFFF;
+}
+.summary_box_card{
+	-fx-background-color: linear-gradient(to right, #74ebd5, #ACB6E5);
+	-fx-border-width: 15;
+	-fx-background-radius: 15;
+	-fx-border-radius: 10;
+	-fx-padding:5;
+	-fx-effect: dropshadow(three-pass-box, #AAAAAA, 5, 0, 0, 4);
+}
+.summary_no{
+	-fx-font-size: 4em;
+	-fx-font-weight: bold;
+	-fx-text-fill: #FFFFFF;
+}
+.summary_text{
+	-fx-font-size: 1.5em;
+	-fx-font-weight: bold;
+	-fx-text-fill: #FFFFFF;	
+}
+.summary_text:hover{
+	-fx-cursor: hand;
+}
+.notification_box{
+	-fx-border-radius: 15;
+	-fx-border-width: 10;
+	-fx-font-family: 'Arial';
+	-fx-background-color: #FFFFFF;
+	-fx-background-radius: 15;
+	-fx-padding: 10;
+	-fx-spacing: 10;	
+}
+.read_lbl{
+	-fx-text-fill: #000000;
+}
+.read_lbl:hover{
+	-fx-cursor: hand;
+}
+.notification_card{
+	-fx-background-color: linear-gradient(to right, #74ebd5, #ACB6E5);
+	-fx-border-width: 15;
+	-fx-background-radius: 15;
+	-fx-border-radius: 10;
+	-fx-padding:5;
+	-fx-effect: dropshadow(three-pass-box, #AAAAAA, 5, 0, 0, 4);	
+}
+.registration_title{
+	-fx-font-weight: bold;
+	-fx-font-size: 2em;
+	-fx-fill: #000000;
+}
+.registration_box{
+	-fx-border-radius: 15;
+	-fx-border-width: 10;
+	-fx-font-family: 'Arial';
+	-fx-font-size: 1.5em;
+	-fx-background-color: #FFFFFF;
+	-fx-background-radius: 15;
+	-fx-padding: 10;
+	-fx-spacing: 10;	
+}
+.registration_box TextField:hover{
+	-fx-cursor: text;
+}
+.registration_box Button{
+	-fx-background-color: #24a0ed;
+}
+.registration_box Button:hover{
+	-fx-background-color: #0ba6ff;
+	-fx-cursor: hand;	
+}
+.Line{
+	alignment: center;
+}

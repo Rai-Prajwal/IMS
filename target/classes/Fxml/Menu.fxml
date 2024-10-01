@@ -1,8 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
-
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="200.0" styleClass="menu_container" stylesheets="@../Css/menu.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ataraxia.IMS.Controllers.MenuController">
+   <children>
+      <AnchorPane prefHeight="700.0" prefWidth="180.0" styleClass="left_container" stylesheets="@menu.css">
+         <children>
+            <VBox layoutX="43.0" layoutY="23.0" prefHeight="140.0" prefWidth="100.0" styleClass="title_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <FontAwesomeIconView glyphName="BOOK" size="80" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IMS" />
+               </children>
+            </VBox>
+            <VBox layoutY="160.0" prefHeight="380.0" prefWidth="100.0" styleClass="nav_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
+               <children>
+                  <Button fx:id="home" mnemonicParsing="false" text="Home" textFill="#eae2e2">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="HOME" size="20" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="list" mnemonicParsing="false" text="Register">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="LIST" size="20" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="help" mnemonicParsing="false" text="Help">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="QUESTION" size="20" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="settings" mnemonicParsing="false" text="Settings" textFill="#40befc">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="GEAR" size="20" styleClass="menu_container" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="logout" mnemonicParsing="false" styleClass="menu_container" text="Logout">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SIGN_OUT" size="20" />
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox layoutY="500.0" prefHeight="140.0" prefWidth="100.0" styleClass="report_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Bug/Suggestions" />
+                  <Label text="use this to send Suggestions or Report Bugs" />
+                  <Button fx:id="report" mnemonicParsing="false" text="Report">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEND" size="20" />
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

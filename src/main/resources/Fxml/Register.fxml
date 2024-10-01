@@ -1,8 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="container" stylesheets="@../Css/register.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ataraxia.IMS.Controllers.RegisterControl">
+   <children>
+      <Text layoutX="529.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" AnchorPane.leftAnchor="484.0" AnchorPane.rightAnchor="484.0" AnchorPane.topAnchor="10.0" />
+      <AnchorPane layoutX="20.0" layoutY="28.0" prefHeight="40.0" prefWidth="1040.0" styleClass="container_bar" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <TextField fx:id="search" prefHeight="25.0" prefWidth="300.0" promptText="Search" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="5.0" />
+            <ChoiceBox fx:id="sort" prefHeight="25.0" prefWidth="100.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="5.0" />
+            <Label fx:id="download" prefHeight="30.0" text="Download" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="5.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="DOWNLOAD" size="18" text="" />
+               </graphic>
+            </Label>
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="308.0" layoutY="24.0" size="15" AnchorPane.leftAnchor="295.0" AnchorPane.topAnchor="10.0" />
+            <Label fx:id="file_import" layoutX="578.0" layoutY="12.0" prefHeight="30.0" text="Import" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="5.0">
+               <graphic>
+                  <MaterialDesignIconView glyphName="IMPORT" size="18" />
+               </graphic>
+            </Label>
+            <Label fx:id="file_export" layoutX="656.0" layoutY="12.0" prefHeight="30.0" text="Export" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="5.0">
+               <graphic>
+                  <MaterialDesignIconView glyphName="EXPORT" size="18" />
+               </graphic>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="records" layoutX="56.0" layoutY="122.0" prefHeight="580.0" prefWidth="1040.0" styleClass="container_table" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="120.0">
+        <columns>
+            <TableColumn prefWidth="60.0" text="Select" />
+            <TableColumn prefWidth="250.0" text="Institution Name" />
+            <TableColumn prefWidth="200.0" text="Institution President" />
+            <TableColumn minWidth="0.0" prefWidth="200.0" text="Verified by" />
+            <TableColumn minWidth="0.0" prefWidth="110.0" text="View" />
+            <TableColumn minWidth="0.0" prefWidth="110.0" text="Edit" />
+            <TableColumn minWidth="-1.0" prefWidth="110.0" text="Renew" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>
-
