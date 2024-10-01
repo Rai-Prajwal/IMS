@@ -3,7 +3,7 @@
 A java application made to record registration details of instituitons.
 
 ## Built with
--Java
--JavaFX for the GUI
--SQLite for database
--Maven for build automation
+-Java <br>
+-JavaFX for the GUI <br>
+-SQLite for database <br>
+-Maven for build automation <br>
