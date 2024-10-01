@@ -1,0 +1,24 @@
+.container_left{
+	-fx-background-color: linear-gradient(to bottom right, #74ebd5, #ACB6E5);
+}
+.container_left FontAwesomeIconView{
+	-fx-fill: "white";
+	-fx-alignment: center;
+}
+.container_right{
+	-fx-background-color: "white";
+	-fx-font-family: "Arial",
+}
+#remember_me:hover{
+	-fx-cursor: hand;
+}
+#forgot_password:hover{
+	-fx-cursor:hand;
+}
+#login{
+	-fx-background-color: #24a0ed;
+}
+#login:hover{
+	-fx-background-color: #0ba6ff;
+	-fx-cursor: hand;
+}
