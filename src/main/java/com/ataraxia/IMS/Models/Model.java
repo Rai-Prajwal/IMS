@@ -1,4 +1,6 @@
-package Models;
+package com.ataraxia.IMS.Models;
+
+import com.ataraxia.IMS.Views.ViewFactory;
 
 public class Model {
 	private static Model model;

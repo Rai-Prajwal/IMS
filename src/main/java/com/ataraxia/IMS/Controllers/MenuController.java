@@ -1,4 +1,4 @@
-package Controllers;
+package com.ataraxia.IMS.Controllers;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

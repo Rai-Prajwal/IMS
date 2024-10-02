@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="container" stylesheets="@../Css/register.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ataraxia.IMS.Controllers.RegisterControl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="container" stylesheets="@../Css/register.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ataraxia.IMS.Controllers.RegisterController">
    <children>
       <Text layoutX="529.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" AnchorPane.leftAnchor="484.0" AnchorPane.rightAnchor="484.0" AnchorPane.topAnchor="10.0" />
       <AnchorPane layoutX="20.0" layoutY="28.0" prefHeight="40.0" prefWidth="1040.0" styleClass="container_bar" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">

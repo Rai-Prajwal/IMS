@@ -9,7 +9,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="200.0" styleClass="menu_container" stylesheets="@../Css/menu.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ataraxia.IMS.Controllers.MenuController">
    <children>
-      <AnchorPane prefHeight="700.0" prefWidth="180.0" styleClass="left_container" stylesheets="@menu.css">
+      <AnchorPane prefHeight="700.0" prefWidth="180.0" styleClass="left_container" stylesheets="@../Css/menu.css">
          <children>
             <VBox layoutX="43.0" layoutY="23.0" prefHeight="140.0" prefWidth="100.0" styleClass="title_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
