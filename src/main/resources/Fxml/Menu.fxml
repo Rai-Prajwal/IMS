@@ -29,7 +29,7 @@
                         <FontAwesomeIconView glyphName="LIST" size="20" />
                      </graphic>
                   </Button>
-                  <Button fx:id="help" mnemonicParsing="false" text="Help">
+                  <Button fx:id="faq" mnemonicParsing="false" text="Help">
                      <graphic>
                         <FontAwesomeIconView glyphName="QUESTION" size="20" />
                      </graphic>

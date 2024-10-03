@@ -12,6 +12,9 @@ public class ViewFactory {
 	private final StringProperty menuSwitch;
 	private AnchorPane homeView;
 	private AnchorPane registerView;
+	private AnchorPane faqView;
+	private AnchorPane settingsView;
+	private AnchorPane reportView;
 	
 	public ViewFactory() {
 		this.menuSwitch = new SimpleStringProperty("");
@@ -41,6 +44,37 @@ public class ViewFactory {
 			}
 		}
 		return registerView;
+	}
+	
+	public AnchorPane getFaqView() {
+		if(faqView == null) {
+			try {
+				faqView = new FXMLLoader(getClass().getResource("/Fxml/FAQ.fxml")).load();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return faqView;
+	}
+	public AnchorPane getSettingsView() {
+		if(registerView == null) {
+			try {
+				settingsView = new FXMLLoader(getClass().getResource("/Fxml/Settings.fxml")).load();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return settingsView;
+	}
+	public AnchorPane getReportView() {
+		if(reportView == null) {
+			try {
+				reportView = new FXMLLoader(getClass().getResource("/Fxml/Report.fxml")).load();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return reportView;
 	}
 	
 	public void showLoginWindow(){
