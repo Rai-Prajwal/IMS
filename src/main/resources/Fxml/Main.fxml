@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="main_view" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
 	<left>
 		<fx:include source="Menu.fxml"/>
 	</left>

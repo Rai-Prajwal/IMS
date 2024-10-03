@@ -1,5 +1,7 @@
 package com.ataraxia.IMS.Views;
 
+import javafx.beans.property.StringProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
@@ -7,10 +9,16 @@ import javafx.scene.Scene;
 import com.ataraxia.IMS.Controllers.MainController;
 
 public class ViewFactory {
+	private final StringProperty menuSwitch;
 	private AnchorPane homeView;
+	private AnchorPane registerView;
 	
 	public ViewFactory() {
-		
+		this.menuSwitch = new SimpleStringProperty("");
+	}
+	
+	public StringProperty getMenuSwitch() {
+		return menuSwitch;
 	}
 	
 	public AnchorPane getHomeView() {
@@ -22,6 +30,17 @@ public class ViewFactory {
 			}
 		}
 		return homeView;
+	}
+	
+	public AnchorPane getRegisterView() {
+		if(registerView == null) {
+			try {
+				registerView = new FXMLLoader(getClass().getResource("/Fxml/Register.fxml")).load();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return registerView;
 	}
 	
 	public void showLoginWindow(){
