@@ -56,8 +56,9 @@ public class ViewFactory {
 		}
 		return faqView;
 	}
+	
 	public AnchorPane getSettingsView() {
-		if(registerView == null) {
+		if(settingsView == null) {
 			try {
 				settingsView = new FXMLLoader(getClass().getResource("/Fxml/Settings.fxml")).load();
 			}catch(Exception e) {
@@ -66,6 +67,7 @@ public class ViewFactory {
 		}
 		return settingsView;
 	}
+	
 	public AnchorPane getReportView() {
 		if(reportView == null) {
 			try {
