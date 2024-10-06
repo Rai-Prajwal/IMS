@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../Css/login.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ataraxia.IMS.Controllers.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@../Css/darkmode.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ataraxia.IMS.Controllers.LoginController">
    <children>
-      <AnchorPane layoutX="14.0" layoutY="50.0" prefHeight="400.0" prefWidth="200.0" styleClass="container_left" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="14.0" layoutY="50.0" prefHeight="400.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <FontAwesomeIconView glyphName="BOOK" layoutX="94.0" layoutY="155.0" size="150" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+            <FontAwesomeIconView glyphName="BOOK" layoutX="94.0" layoutY="155.0" size="150" styleClass="icons" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="125.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="288.0" layoutY="-1.0" prefHeight="400.0" prefWidth="400.0" styleClass="container_right" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="288.0" layoutY="-1.0" prefHeight="400.0" prefWidth="400.0" styleClass="container" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="username" layoutX="80.0" layoutY="150.0" prefHeight="30.0" prefWidth="240.0" promptText="username" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="150.0">
+            <TextField fx:id="username" layoutX="80.0" layoutY="150.0" prefHeight="30.0" prefWidth="240.0" promptText="username" styleClass="text-field" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="150.0">
             </TextField>
-            <PasswordField fx:id="password" layoutX="88.0" layoutY="174.0" prefHeight="30.0" prefWidth="240.0" promptText="password" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="200.0" />
-            <Button fx:id="login" layoutX="104.0" layoutY="345.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="240.0" text="login" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" />
-            <JFXCheckBox fx:id="remember_me" checkedColor="#107e9c" layoutX="88.0" layoutY="229.0" prefHeight="20.0" prefWidth="120.0" text="Remember me" unCheckedColor="#131313" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="250.0">
+            <PasswordField fx:id="password" layoutX="88.0" layoutY="174.0" prefHeight="30.0" prefWidth="240.0" promptText="password" styleClass="password-field" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="200.0" />
+            <Button fx:id="login" layoutX="104.0" layoutY="345.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="240.0" styleClass="button,action" text="login" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" />
+            <JFXCheckBox fx:id="remember_me" checkedColor="#107e9c" layoutX="88.0" layoutY="229.0" prefHeight="20.0" prefWidth="120.0" styleClass="jfx-check-box" text="Remember me" unCheckedColor="#131313" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="250.0">
 			</JFXCheckBox>
-            <Label fx:id="forgot_password" layoutX="234.0" layoutY="230.0" prefHeight="20.0" prefWidth="100.0" text="Forgot password?" textAlignment="CENTER" textFill="#0c53f7" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="250.0">
+            <Label fx:id="forgot_password" layoutX="234.0" layoutY="230.0" prefHeight="20.0" prefWidth="100.0" styleClass="link" text="Forgot password?" textAlignment="CENTER" textFill="#0c53f7" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="250.0">
             </Label>
-            <Text layoutX="70.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 3em; -fx-font-weight: bold;" text="Welcome Back!" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="80.0" />
+            <Text layoutX="70.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Welcome Back!" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="80.0" />
             <Label fx:id="error" layoutX="3.0" layoutY="340.0" prefHeight="30.0" prefWidth="400.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>

@@ -4,7 +4,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.ataraxia.IMS.Models.Model;
 
 public class MenuController implements Initializable{

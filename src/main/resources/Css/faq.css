@@ -1,12 +1,12 @@
-.background{
-	-fx-background-color: linear-gradient(to bottom right, #74ebd5, #ACB6E5);
-}
 .background Text{
 	-fx-font-size: 3em;
-	-fx-font-family: Arial;
 }
-.Container{
-	-fx-background-color: #FFFFFF;
-	-fx-background-color-radius: 15;
-	-fx-border-radius:15;
+.accordion{
+	-fx-background-radius: 10;
+	-fx-border-radius: 10;
+}
+.titled-pane .title{
+	-fx-font-size: 1.5em;
+	-fx-background-radius: 10;
+	-fx-border-radius: 10;
 }

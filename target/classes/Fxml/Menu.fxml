@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="200.0" styleClass="menu_container" stylesheets="@../Css/menu.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ataraxia.IMS.Controllers.MenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="200.0" styleClass="root" stylesheets="@../Css/darkmode.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ataraxia.IMS.Controllers.MenuController">
    <children>
-      <AnchorPane prefHeight="700.0" prefWidth="180.0" styleClass="left_container" stylesheets="@../Css/menu.css">
+      <AnchorPane prefHeight="700.0" prefWidth="180.0" stylesheets="@../Css/menu.css">
          <children>
-            <VBox layoutX="43.0" layoutY="23.0" prefHeight="140.0" prefWidth="100.0" styleClass="title_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox layoutX="43.0" layoutY="23.0" prefHeight="140.0" prefWidth="100.0" stylesheets="@../Css/menu.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <FontAwesomeIconView glyphName="BOOK" size="80" />
+                  <FontAwesomeIconView glyphName="BOOK" size="80" styleClass="icons" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IMS" />
                </children>
+               <styleClass>
+                  <String fx:value="container" />
+                  <String fx:value="title_container" />
+               </styleClass>
             </VBox>
-            <VBox layoutY="160.0" prefHeight="380.0" prefWidth="100.0" styleClass="nav_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
+            <VBox layoutY="160.0" prefHeight="380.0" prefWidth="100.0" stylesheets="@../Css/menu.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="160.0">
                <children>
                   <Button fx:id="home" mnemonicParsing="false" text="Home" textFill="#eae2e2">
                      <graphic>
@@ -45,8 +50,12 @@
                      </graphic>
                   </Button>
                </children>
+               <styleClass>
+                  <String fx:value="container" />
+                  <String fx:value="nav_container" />
+               </styleClass>
             </VBox>
-            <VBox layoutY="500.0" prefHeight="140.0" prefWidth="100.0" styleClass="report_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <VBox layoutY="500.0" prefHeight="140.0" prefWidth="100.0" stylesheets="@../Css/menu.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Bug/Suggestions" />
                   <Label text="use this to send Suggestions or Report Bugs" />
@@ -56,8 +65,16 @@
                      </graphic>
                   </Button>
                </children>
+               <styleClass>
+                  <String fx:value="container" />
+                  <String fx:value="report_container" />
+               </styleClass>
             </VBox>
          </children>
+         <styleClass>
+            <String fx:value=".root" />
+            <String fx:value="left_container" />
+         </styleClass>
       </AnchorPane>
    </children>
 </VBox>

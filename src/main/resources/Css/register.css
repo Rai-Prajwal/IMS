@@ -1,13 +1,7 @@
-.container{
-	-fx-background-color: linear-gradient(to right, #74ebd5, #ACB6E5);
-}
 .container Text{
-	-fx-fill: #000000;
 	-fx-font-size: 2.5em;
-	-fx-font-family: "Arial";
 }
 .container_bar{
-	-fx-background-color: #FFFFFF;
 	-fx-font-size: 1em;
 	-fx-border-radius: 10;
 	-fx-background-radius: 10;
@@ -21,9 +15,12 @@
 .container_bar Label:hover{
 	-fx-cursor: hand;
 }
-.container_table{
-	-fx-background-color: #EEEEEE;
+.table-view{
 	-fx-padding:10;
 	-fx-border-radius: 10;
 	-fx-background-radius: 10;
+}
+.choice-box{
+	-fx-background-color: #ffffff;
+	-fx-text-fill: #010101;
 }

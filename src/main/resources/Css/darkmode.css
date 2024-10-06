@@ -1,0 +1,102 @@
+.root {
+    -fx-background-color: #010101;
+    -fx-font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container {
+    -fx-background-color: #171717;
+    -fx-background-radius: 20;
+}
+
+.text{
+	-fx-fill: #ffffff;
+}
+.title {
+    -fx-font-size: 3em;
+    -fx-fill: #ffffff;
+}
+
+.text-field, .password-field {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #010101;
+    -fx-prompt-text-fill: #808080;
+}
+
+.button {
+    -fx-background-color: #3e91ff;
+    -fx-text-fill: #ffffff;
+}
+
+.action:hover {
+    -fx-cursor: hand;
+}
+
+.icons {
+    -fx-fill: #ffffff;
+}
+
+.link {
+    -fx-text-fill: #3e91ff;
+}
+
+.label {
+    -fx-text-fill: #ffffff;
+}
+
+.jfx-check-box {
+    -fx-text-fill: #ffffff;
+}
+
+.jfx-check-box .box {
+    -fx-background-color: #010101;
+    -fx-border-color: #3e91ff;
+    -fx-border-radius: 2px;
+}
+
+.jfx-check-box:selected .mark {
+    -fx-background-color: #3e91ff;
+}
+
+#error {
+    -fx-text-fill: #ff0000;
+}
+
+.line{
+	-fx-stroke: #ffffff;
+}
+
+.column-header{
+    -fx-background-color: #171717;
+}
+
+.accordion{
+	-fx-background-color: #171717;
+}
+
+.titled-pane{
+	-fx-background-color: #171717;
+}
+
+.titled-pane .title{
+	-fx-background-color: #171717;
+}
+
+.titled-pane .content{
+	-fx-background-color: #171717;
+}
+
+.tab-pane{
+	-fx-background-color: #171717;
+}
+
+.tab-pane .tab:selected{
+	-fx-background-color: #3e91ff;
+}
+
+.tab-pane .tab-header-area .tab{
+	-fx-background-color: #171717;
+}
+
+.tab-pane .tab-content-area{
+	-fx-background-color: #171717;
+}
