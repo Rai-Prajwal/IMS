@@ -83,6 +83,5 @@
    </children>
    <stylesheets>
       <URL value="@../Css/faq.css" />
-      <URL value="@../Css/darkmode.css" />
    </stylesheets>
 </AnchorPane>

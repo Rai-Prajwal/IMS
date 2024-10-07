@@ -1,19 +1,16 @@
 .username{
 	-fx-font-weight: bold;
 	-fx-font-size: 2em;
-	-fx-fill: #ffffff;
 }
 
 .date_lbl{
 	-fx-font-weight: bold;
 	-fx-font-size: 2em;
-	-fx-text-fill: #ffffff;	
 }
 
 .summary_tittle{
 	-fx-font-weight: bold;
 	-fx-font-size: 1.5em;
-	-fx-fill: #ffffff;		
 }
 
 .summary_box{
@@ -35,13 +32,11 @@
 .summary_no{
 	-fx-font-size: 4em;
 	-fx-font-weight: bold;
-	-fx-text-fill: #ffffff;
 }
 
 .summary_text{
 	-fx-font-size: 1.5em;
 	-fx-font-weight: bold;
-	-fx-text-fill: #ffffff;	
 }
 
 .summary_text:hover{
@@ -56,9 +51,6 @@
 	-fx-spacing: 10;	
 }
 
-.read_lbl{
-	-fx-text-fill: #ffffff;
-}
 
 .read_lbl:hover{
 	-fx-cursor: hand;

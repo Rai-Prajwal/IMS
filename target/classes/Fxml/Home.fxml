@@ -99,7 +99,6 @@
       </AnchorPane>
    </children>
    <stylesheets>
-      <URL value="@../Css/darkmode.css" />
       <URL value="@../Css/home.css" />
    </stylesheets>
 </AnchorPane>

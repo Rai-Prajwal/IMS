@@ -100,3 +100,7 @@
 .tab-pane .tab-content-area{
 	-fx-background-color: #171717;
 }
+
+.label{
+	-fx-text-fill: #ffffff;
+}

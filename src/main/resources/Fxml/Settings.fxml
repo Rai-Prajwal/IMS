@@ -27,7 +27,7 @@
                      <children>
                         <RadioButton fx:id="lightmode" layoutX="83.0" layoutY="216.0" mnemonicParsing="false" text="Light Mode" />
                         <Text layoutX="74.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Theme" />
-                        <RadioButton fx:id="darkmode" layoutX="453.0" layoutY="216.0" mnemonicParsing="true" text="Dark Mode" />
+                        <RadioButton fx:id="darkmode" layoutX="453.0" layoutY="216.0" mnemonicParsing="false" text="Dark Mode" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -47,6 +47,5 @@
    </children>
    <stylesheets>
       <URL value="@../Css/settings.css" />
-      <URL value="@../Css/darkmode.css" />
    </stylesheets>
 </AnchorPane>

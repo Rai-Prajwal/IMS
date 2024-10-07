@@ -8,6 +8,10 @@
     -fx-background-radius: 20;
 }
 
+.text{
+	-fx-fill: #010101;
+}
+
 .title {
     -fx-font-size: 3em;
     -fx-fill: #010101;
@@ -96,4 +100,8 @@
 
 .tab-pane .tab-content-area{
 	-fx-background-color: #ffffff;
+}
+
+.label{
+	-fx-text-fill: #010101;
 }
