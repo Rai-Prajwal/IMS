@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
@@ -16,9 +20,23 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
-          <Tab fx:id="account" text="Account">
+          <Tab fx:id="account" text="Accounts">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="29.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="My Account" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="20.0" />
+                        <AnchorPane layoutX="42.0" layoutY="66.0" prefHeight="400.0" prefWidth="920.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
+                           <children>
+                              <Text layoutX="92.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Username" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0" />
+                              <Text layoutX="40.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Password" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="120.0" />
+                              <Label fx:id="edit_user" layoutX="229.0" layoutY="56.0" prefHeight="40.0" prefWidth="80.0" style="-fx-alignment: center;" text="Edit" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="50.0" />
+                              <Label fx:id="edit_pass" layoutX="200.0" layoutY="117.0" prefHeight="40.0" prefWidth="80.0" style="-fx-alignment: center;" text="Edit" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="130.0" />
+                              <Button fx:id="save" layoutX="40.0" layoutY="348.0" mnemonicParsing="false" text="Save" />
+                              <PasswordField fx:id="acc_pass" layoutX="40.0" layoutY="158.0" styleClass="text-field" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0" />
+                              <TextField fx:id="acc_user" layoutX="41.0" layoutY="78.0" styleClass="password-field" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="80.0" />
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
             </content>
           </Tab>
             <Tab fx:id="appearance" text="Appearance">
@@ -26,7 +44,7 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <RadioButton fx:id="lightmode" layoutX="83.0" layoutY="216.0" mnemonicParsing="false" text="Light Mode" />
-                        <Text layoutX="74.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Theme" />
+                        <Text layoutX="74.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Theme" />
                         <RadioButton fx:id="darkmode" layoutX="453.0" layoutY="216.0" mnemonicParsing="false" text="Dark Mode" />
                      </children></AnchorPane>
               </content>
