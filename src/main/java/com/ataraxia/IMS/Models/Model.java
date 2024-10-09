@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
+    private String currentUser;
     private String currentTheme;
 
     private Model() {
@@ -27,7 +28,15 @@ public class Model {
     public String getCurrentTheme() {
         return currentTheme;
     }
+    
+    public String getCurrentUser() {
+        return currentUser;
+    }
 
+    public void setCurrentUser(String username) {
+        this.currentUser = username;
+    }
+    
     public void setCurrentTheme(String themeName) {
         if (themeName.equals("Light Mode")) {
             currentTheme = "/Css/lightmode.css";

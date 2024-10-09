@@ -19,7 +19,7 @@ public class Usersdb {
             statement.executeUpdate(sql);
         }
     }
-
+    
     public static void addUser(String username, String password) throws SQLException {
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         
@@ -31,7 +31,25 @@ public class Usersdb {
             pstmt.executeUpdate();
         }
     }
-
+    
+    public static void createDefaultAdminAccount() throws SQLException{
+    	if(!userExists()) {
+    		addUser("admin","admin69");
+    	}
+    }
+    
+    private static boolean userExists() throws SQLException{
+    	try(Connection connection = DriverManager.getConnection(JDBC_URL);
+    		Statement statement = connection.createStatement();
+    		ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) as count from users")){
+    		
+    		if(resultSet.next()) {
+    			return resultSet.getInt("count") > 0;
+    		}
+    	}
+    	return false;
+    }
+    
     public static boolean updateUser(String currentUsername, String newUsername, String newPassword) throws SQLException {
         String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
         
@@ -45,6 +63,10 @@ public class Usersdb {
             int affectedRows = pstmt.executeUpdate();
             return affectedRows > 0;
         }
+    }
+
+    public static boolean authenticateUser(String username, String password) throws SQLException {
+        return verifyUser(username, password);
     }
 
     public static boolean verifyUser(String username, String password) throws SQLException {

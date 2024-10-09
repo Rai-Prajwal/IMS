@@ -30,6 +30,7 @@ public class SettingsController implements Initializable {
     @FXML private PasswordField acc_pass;
     @FXML private Label edit_user;
     @FXML private Label edit_pass;
+    @FXML private PasswordField confirm_pass;
     @FXML private Button save;
     
     private String currentUsername;
@@ -52,9 +53,17 @@ public class SettingsController implements Initializable {
             }
         });
         
-        loadUserData();
-        save.setOnAction(event -> saveUserData());
+        try {
+            Usersdb.createUsersTable();
+            Usersdb.createDefaultAdminAccount();
+            loadUserData();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to initialize database.");
+        }
         
+        save.setOnAction(event -> saveUserData());
+        initializeTheme();
     }
     
     public void initializeTheme() {
@@ -67,45 +76,52 @@ public class SettingsController implements Initializable {
     }
     
     private void loadUserData() {
-    	try {
-    		currentUsername = getCurrentLoggedInUsername();
-    		Usersdb.User user = Usersdb.getUserByUsername(currentUsername);
-    		
-    		if (user != null) {
-    			acc_user.setText(user.getUsername());
-    			acc_pass.setText("**********");
-    			edit_user.setText(user.getUsername());
-    		}else {
-    			showAlert("Error", "User not found.");
-    		}
-    	}catch (SQLException e) {
-    		e.printStackTrace();
-    		showAlert("Error", "Failed to load user data.");
-    	}
+        try {
+            currentUsername = "admin";
+            Usersdb.User user = Usersdb.getUserByUsername(currentUsername);
+            
+            if (user != null) {
+                acc_user.setText(user.getUsername());
+                acc_pass.setText("********");
+            } else {
+                showAlert("Error", "Default admin account not found.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to load user data.");
+        }
     }
     
     private void saveUserData() {
         String newUsername = edit_user.getText();
         String newPassword = edit_pass.getText();
+        String confirmPassword = confirm_pass.getText();
 
-        if (!newUsername.isEmpty() && !newPassword.isEmpty()) {
-            try {
-                boolean updateSuccessful = Usersdb.updateUser(currentUsername, newUsername, newPassword);
-                if (updateSuccessful) {
-                    currentUsername = newUsername;
-                    acc_user.setText(newUsername);
-                    acc_pass.setText("********");
-                    edit_pass.setText("");
-                    showAlert("Success", "User data updated successfully.");
-                } else {
-                    showAlert("Error", "Failed to update user data.");
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                showAlert("Error", "Database error occurred.");
+        if (newUsername.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            showAlert("Error", "All fields must be filled.");
+            return;
+        }
+
+        if (!newPassword.equals(confirmPassword)) {
+            showAlert("Error", "Passwords do not match.");
+            return;
+        }
+
+        try {
+            boolean updateSuccessful = Usersdb.updateUser(currentUsername, newUsername, newPassword);
+            if (updateSuccessful) {
+                currentUsername = newUsername;
+                acc_user.setText(newUsername);
+                acc_pass.setText("********");
+                edit_pass.setText("");
+                confirm_pass.clear();
+                showAlert("Success", "User data updated successfully.");
+            } else {
+                showAlert("Error", "Failed to update user data.");
             }
-        } else {
-            showAlert("Error", "Username and password cannot be empty.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error", "Database error occurred.");
         }
     }
 
@@ -115,9 +131,5 @@ public class SettingsController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
-    }
-    
-    private String getCurrentLoggedInUsername() {
-    	   return "defaultUser";
     }
 }

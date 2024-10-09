@@ -32,8 +32,9 @@
                               <Label fx:id="edit_user" layoutX="229.0" layoutY="56.0" prefHeight="40.0" prefWidth="80.0" style="-fx-alignment: center;" text="Edit" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="50.0" />
                               <Label fx:id="edit_pass" layoutX="200.0" layoutY="117.0" prefHeight="40.0" prefWidth="80.0" style="-fx-alignment: center;" text="Edit" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="130.0" />
                               <Button fx:id="save" layoutX="40.0" layoutY="348.0" mnemonicParsing="false" text="Save" />
-                              <PasswordField fx:id="acc_pass" layoutX="40.0" layoutY="158.0" styleClass="text-field" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0" />
-                              <TextField fx:id="acc_user" layoutX="41.0" layoutY="78.0" styleClass="password-field" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="80.0" />
+                              <PasswordField fx:id="acc_pass" layoutX="40.0" layoutY="158.0" styleClass="password-field" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0" />
+                              <PasswordField fx:id="confirm_pass" layoutX="40.0" layoutY="158.0" promptText="confirm password" styleClass="password-field" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="200.0" />
+                              <TextField fx:id="acc_user" layoutX="41.0" layoutY="78.0" styleClass="text-field" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="80.0" />
                            </children>
                         </AnchorPane>
                      </children></AnchorPane>
