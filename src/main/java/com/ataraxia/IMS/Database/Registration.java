@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Registration {
 	private Connection con;
@@ -60,6 +61,13 @@ public class Registration {
     		e.printStackTrace();
     	}
     }
+    
+    public ResultSet getAllRegistrations() throws SQLException {
+        String sql = "SELECT * FROM registrations";
+        Statement stmt = con.createStatement();
+        return stmt.executeQuery(sql);
+    }
+    
     public void closeConnection() {
         try {
             if (con != null) {
