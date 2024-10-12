@@ -22,7 +22,7 @@ public class Registration {
 	
 	private void createTable() {
 		String sql ="CREATE TABLE IF NOT EXISTS registrations("+
-				"registration_no INTEGER PRIMARY KEY,"+
+				"registration_no TEXT PRIMARY KEY,"+
 				"registration_date INTEGER,"+
 				"president_name TEXT,"+
 				"institution_name TEXT,"+
@@ -39,7 +39,7 @@ public class Registration {
 		}
 	}
 	
-    public void insertRegistration(int registrationNo, int registrationDate, String presidentName,
+    public void insertRegistration(String registrationNo, int registrationDate, String presidentName,
             String institutionName, String address, long phoneNo,
             int membersCount, int expiryDate, String verifiedBy) {
     	String sql = "INSERT INTO registrations (registration_no, registration_date, president_name, " +
@@ -47,7 +47,7 @@ public class Registration {
     			"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     	try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-    		pstmt.setInt(1, registrationNo);
+    		pstmt.setString(1, registrationNo);
     		pstmt.setInt(2, registrationDate);
     		pstmt.setString(3, presidentName);
     		pstmt.setString(4, institutionName);

@@ -27,112 +27,52 @@ public class RegisterController implements Initializable {
 	@FXML public Label file_import;
 	@FXML public Label file_export;
 	@FXML public TableView<RegistrationModel> records;
+	@FXML private TableColumn<RegistrationModel, CheckBox> select;
+	@FXML private TableColumn<RegistrationModel, String> reg_no;	
+	@FXML private TableColumn<RegistrationModel, String> ins_name;
+	@FXML private TableColumn<RegistrationModel, String> pres_name;
+	@FXML private TableColumn<RegistrationModel, String> verified_by;
+	@FXML private TableColumn<RegistrationModel, Long> phone;
     private Registration registration;
     private ObservableList<RegistrationModel> registrationData = FXCollections.observableArrayList();
 	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
         registration = new Registration();
-        setupTableView();
+        bindTableData();
         loadData();
 	}
 	
-    private void setupTableView() {
-        TableColumn<RegistrationModel, CheckBox> selectCol = new TableColumn<>("Select");
-        selectCol.setCellValueFactory(new PropertyValueFactory<>("selectCheckBox"));
-
-        TableColumn<RegistrationModel, String> institutionNameCol = new TableColumn<>("Institution Name");
-        institutionNameCol.setCellValueFactory(new PropertyValueFactory<>("institutionName"));
-
-        TableColumn<RegistrationModel, String> presidentCol = new TableColumn<>("Institution President");
-        presidentCol.setCellValueFactory(new PropertyValueFactory<>("presidentName"));
-
-        TableColumn<RegistrationModel, String> verifiedByCol = new TableColumn<>("Verified by");
-        verifiedByCol.setCellValueFactory(new PropertyValueFactory<>("verifiedBy"));
-
-        TableColumn<RegistrationModel, Button> viewCol = new TableColumn<>("View");
-        viewCol.setCellFactory(param -> new TableCell<>() {
-            final Button viewButton = new Button("View");
-            {
-                viewButton.setOnAction(event -> {
-                    RegistrationModel data = getTableView().getItems().get(getIndex());
-                    // Handle view action
-                });
-            }
-            @Override
-            protected void updateItem(Button item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(viewButton);
-                }
-            }
-        });
-        
-        TableColumn<RegistrationModel, Button> editCol = new TableColumn<>("Edit");
-        editCol.setCellFactory(param -> new TableCell<>() {
-            final Button editButton = new Button("Edit");
-            {
-                editButton.setOnAction(event -> {
-                    RegistrationModel data = getTableView().getItems().get(getIndex());
-                    // Handle edit action
-                });
-            }
-            @Override
-            protected void updateItem(Button item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(editButton);
-                }
-            }
-        });
-
-        TableColumn<RegistrationModel, Button> renewCol = new TableColumn<>("Renew");
-        renewCol.setCellFactory(param -> new TableCell<>() {
-            final Button renewButton = new Button("Renew");
-            {
-                renewButton.setOnAction(event -> {
-                    RegistrationModel data = getTableView().getItems().get(getIndex());
-                    // Handle renew action
-                });
-            }
-            @Override
-            protected void updateItem(Button item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(renewButton);
-                }
-            }
-        });
-
-        records.getColumns().addAll(selectCol, institutionNameCol, presidentCol, verifiedByCol, viewCol, editCol, renewCol);
-    }
+	private void bindTableData () {
+	    select.setCellValueFactory(new PropertyValueFactory<>("selectCheckBox"));
+	    reg_no.setCellValueFactory(new PropertyValueFactory<>("registrationNo"));
+	    ins_name.setCellValueFactory(new PropertyValueFactory<>("institutionName"));
+	    pres_name.setCellValueFactory(new PropertyValueFactory<>("presidentName"));
+	    verified_by.setCellValueFactory(new PropertyValueFactory<>("verifiedBy"));
+	    phone.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+	}
+    
 
     private void loadData() {
         try {
             ResultSet rs = registration.getAllRegistrations();
             while (rs.next()) {
                 registrationData.add(new RegistrationModel(
-                    rs.getInt("registration_no"),
+                    rs.getString("registration_no"),
                     rs.getString("institution_name"),
                     rs.getString("president_name"),
-                    rs.getString("verified_by")
+                    rs.getString("verified_by"),
+                    rs.getLong("phone_no")
                 ));
             }
             records.setItems(registrationData);
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle the exception (e.g., show an error message)
         }
     }
     public void closeDatabase() {
-    if (registration != null) {
+    	if (registration != null) {
         registration.closeConnection();
+    	}
     }
-}
 }

@@ -43,13 +43,14 @@
       </AnchorPane>
       <TableView fx:id="records" layoutX="56.0" layoutY="122.0" prefHeight="580.0" prefWidth="1040.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="120.0">
         <columns>
-            <TableColumn prefWidth="60.0" text="Select" />
-            <TableColumn prefWidth="250.0" text="Institution Name" />
-            <TableColumn prefWidth="200.0" text="Institution President" />
-            <TableColumn minWidth="0.0" prefWidth="200.0" text="Verified by" />
-            <TableColumn minWidth="0.0" prefWidth="110.0" text="View" />
-            <TableColumn minWidth="0.0" prefWidth="110.0" text="Edit" />
-            <TableColumn minWidth="-1.0" prefWidth="110.0" text="Renew" />
+            <TableColumn fx:id="select" prefWidth="60.0" text="Select" />
+            <TableColumn fx:id="reg_no" minWidth="0.0" prefWidth="100.0" text="Reg No." />
+            <TableColumn fx:id="ins_name" prefWidth="250.0" text="Institution Name" />
+            <TableColumn fx:id="pres_name" prefWidth="170.0" text="Institution President" />
+            <TableColumn fx:id="verified_by" minWidth="0.0" prefWidth="170.0" text="Verified by" />
+            <TableColumn fx:id="phone" minWidth="0.0" prefWidth="130.0" text="Phone Number" />
+            <TableColumn fx:id="view" minWidth="0.0" prefWidth="80.0" text="View" />
+            <TableColumn fx:id="renew" minWidth="-1.0" prefWidth="80.0" text="Renew" />
         </columns>
          <styleClass>
             <String fx:value="container" />

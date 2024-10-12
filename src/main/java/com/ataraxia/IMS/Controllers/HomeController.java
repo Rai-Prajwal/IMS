@@ -48,7 +48,7 @@ public class HomeController implements Initializable {
 	
 	private void insertRegistration() {
 		try {
-			int registrationNo = Integer.parseInt(registration_no.getText());
+			String registrationNo = registration_no.getText();
 			int registrationDate = parseDate(registration_date.getText());
 			String presidentName = president_name.getText();
 			String institutionName = institution_name.getText();
