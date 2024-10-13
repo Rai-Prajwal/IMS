@@ -55,4 +55,8 @@ public class Model {
             scene.getStylesheets().add(themeStylesheet);
         }
     }
+    
+    public boolean isDarkMode() {
+        return currentTheme.contains("darkmode");
+    }
 }

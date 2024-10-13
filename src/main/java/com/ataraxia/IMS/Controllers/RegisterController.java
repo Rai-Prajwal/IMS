@@ -18,7 +18,13 @@ import java.util.ResourceBundle;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.CheckBox;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
+import javafx.geometry.Pos;
+import com.ataraxia.IMS.Models.Model;
+import javafx.scene.paint.Color;
 
 public class RegisterController implements Initializable {
 	@FXML public TextField search;
@@ -33,6 +39,8 @@ public class RegisterController implements Initializable {
 	@FXML private TableColumn<RegistrationModel, String> pres_name;
 	@FXML private TableColumn<RegistrationModel, String> verified_by;
 	@FXML private TableColumn<RegistrationModel, Long> phone;
+	@FXML private TableColumn<RegistrationModel, String> view;
+	@FXML private TableColumn<RegistrationModel, String> renew;
     private Registration registration;
     private ObservableList<RegistrationModel> registrationData = FXCollections.observableArrayList();
 	
@@ -41,6 +49,9 @@ public class RegisterController implements Initializable {
         registration = new Registration();
         bindTableData();
         loadData();
+        
+        setupIcon(view, FontAwesomeIcon.EYE, "", this::handleViewAction);
+        setupIcon(renew, FontAwesomeIcon.REFRESH, "", this:: handleRenewAction);
 	}
 	
 	private void bindTableData () {
@@ -70,6 +81,50 @@ public class RegisterController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    private void setupIcon(TableColumn<RegistrationModel, String> column, FontAwesomeIcon icon, String text, javafx.event.EventHandler<javafx.event.ActionEvent> action) {
+    	column.setCellFactory(col -> new TableCell<RegistrationModel, String>(){
+    		private final Button button = new Button ();
+    		private final HBox hbox = new HBox(5);
+    		private final FontAwesomeIconView iconView = new FontAwesomeIconView(icon);
+    		
+    		{
+    			FontAwesomeIconView iconView = new FontAwesomeIconView(icon);
+                iconView.setStyle("-fx-font-family: FontAwesome; -fx-font-size: 20px;");
+                button.setGraphic(iconView);
+                button.setOnAction(action);
+                button.setStyle("-fx-background-color: transparent;");
+                hbox.getChildren().addAll(button);
+                hbox.setAlignment(Pos.CENTER);
+            
+    		}
+    		
+            private void updateIconColor() {
+                boolean isDarkMode = Model.getInstance().isDarkMode();
+                iconView.setFill(isDarkMode ? Color.WHITE : Color.BLACK);
+            }
+            
+    		@Override
+    		protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(hbox);
+                }
+         }
+    	});
+    }
+    
+    private void handleViewAction(javafx.event.ActionEvent event) {
+    
+    }
+    
+    private void handleRenewAction(javafx.event.ActionEvent event) {
+    	
+    }
+    
     public void closeDatabase() {
     	if (registration != null) {
         registration.closeConnection();

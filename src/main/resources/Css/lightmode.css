@@ -149,3 +149,7 @@
 .table-view .column-header .label {
     -fx-alignment: CENTER;
 }
+
+.button .fontawesome-icon {
+    -fx-fill: #010101;
+}
