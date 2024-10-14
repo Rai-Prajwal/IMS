@@ -7,37 +7,32 @@ import javafx.fxml.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import javafx.scene.control.Tab;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
+
 
 public class SettingsController implements Initializable {
   
-	@FXML public Tab general;
-	@FXML public Tab account;
-	@FXML public Tab appearance;
-	@FXML public Tab notifications;
-	@FXML public Tab support;
-	@FXML public RadioButton lightmode;
-	@FXML public RadioButton darkmode;
-	@FXML private ToggleGroup theme;
-	@FXML private TextField acc_user;
+    @FXML public Tab general;
+    @FXML public Tab account;
+    @FXML public Tab appearance;
+    @FXML public Tab notifications;
+    @FXML public Tab support;
+    @FXML public RadioButton lightmode;
+    @FXML public RadioButton darkmode;
+    @FXML private ToggleGroup theme;
+    @FXML private TextField acc_user;
     @FXML private PasswordField acc_pass;
     @FXML private Label edit_user;
     @FXML private Label edit_pass;
     @FXML private PasswordField confirm_pass;
     @FXML private Button save;
     
+    private Model model;
     private String currentUsername;
-    
     
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        model = Model.getInstance();
         theme = new ToggleGroup();
         
         lightmode.setToggleGroup(theme);
@@ -48,8 +43,8 @@ public class SettingsController implements Initializable {
                 RadioButton selected = (RadioButton) theme.getSelectedToggle();
                 System.out.println("Selected Theme: " + selected.getText());
                 
-                Model.getInstance().setCurrentTheme(selected.getText());
-                Model.getInstance().getViewFactory().applyThemeToAllWindows();
+                model.setCurrentTheme(selected.getText());
+                model.getViewFactory().applyThemeToAllWindows();
             }
         });
         
@@ -64,11 +59,19 @@ public class SettingsController implements Initializable {
         
         save.setOnAction(event -> saveUserData());
         initializeTheme();
+        
+        model.currentThemeProperty().addListener((observable, oldValue, newValue) -> {
+            updateThemeSelection(newValue);
+        });
     }
     
     public void initializeTheme() {
-        String currentTheme = Model.getInstance().getCurrentTheme();
-        if (currentTheme.contains("lightmode")) {
+        String currentTheme = model.getCurrentTheme();
+        updateThemeSelection(currentTheme);
+    }
+    
+    private void updateThemeSelection(String theme) {
+        if (theme.contains("lightmode")) {
             lightmode.setSelected(true);
         } else {
             darkmode.setSelected(true);
@@ -115,6 +118,7 @@ public class SettingsController implements Initializable {
                 acc_pass.setText("********");
                 edit_pass.setText("");
                 confirm_pass.clear();
+                model.setCurrentUser(newUsername);
                 showAlert("Success", "User data updated successfully.");
             } else {
                 showAlert("Error", "Failed to update user data.");

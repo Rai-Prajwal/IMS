@@ -23,8 +23,6 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import javafx.geometry.Pos;
-import com.ataraxia.IMS.Models.Model;
-import javafx.scene.paint.Color;
 
 public class RegisterController implements Initializable {
 	@FXML public TextField search;
@@ -52,6 +50,7 @@ public class RegisterController implements Initializable {
         
         setupIcon(view, FontAwesomeIcon.EYE, "", this::handleViewAction);
         setupIcon(renew, FontAwesomeIcon.REFRESH, "", this:: handleRenewAction);
+        
 	}
 	
 	private void bindTableData () {
@@ -91,6 +90,7 @@ public class RegisterController implements Initializable {
     		{
     			FontAwesomeIconView iconView = new FontAwesomeIconView(icon);
                 iconView.setStyle("-fx-font-family: FontAwesome; -fx-font-size: 20px;");
+                iconView.getStyleClass().add("table-icon");
                 button.setGraphic(iconView);
                 button.setOnAction(action);
                 button.setStyle("-fx-background-color: transparent;");
@@ -98,11 +98,6 @@ public class RegisterController implements Initializable {
                 hbox.setAlignment(Pos.CENTER);
             
     		}
-    		
-            private void updateIconColor() {
-                boolean isDarkMode = Model.getInstance().isDarkMode();
-                iconView.setFill(isDarkMode ? Color.WHITE : Color.BLACK);
-            }
             
     		@Override
     		protected void updateItem(String item, boolean empty) {

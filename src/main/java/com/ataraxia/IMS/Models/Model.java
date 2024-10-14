@@ -1,17 +1,18 @@
 package com.ataraxia.IMS.Models;
 
 import com.ataraxia.IMS.Views.ViewFactory;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.Scene;
 
 public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
-    private String currentUser;
-    private String currentTheme;
+    private final StringProperty currentUser = new SimpleStringProperty();
+    private final StringProperty currentTheme = new SimpleStringProperty("/Css/darkmode.css");
 
     private Model() {
         this.viewFactory = new ViewFactory();
-        this.currentTheme = "/Css/darkmode.css"; // Default theme
     }
 
     public static synchronized Model getInstance() {
@@ -26,37 +27,41 @@ public class Model {
     }
 
     public String getCurrentTheme() {
+        return currentTheme.get();
+    }
+
+    public StringProperty currentThemeProperty() {
         return currentTheme;
     }
-    
+
     public String getCurrentUser() {
+        return currentUser.get();
+    }
+
+    public StringProperty currentUserProperty() {
         return currentUser;
     }
 
     public void setCurrentUser(String username) {
-        this.currentUser = username;
+        this.currentUser.set(username);
     }
-    
+
     public void setCurrentTheme(String themeName) {
         if (themeName.equals("Light Mode")) {
-            currentTheme = "/Css/lightmode.css";
+            currentTheme.set("/Css/lightmode.css");
         } else if (themeName.equals("Dark Mode")) {
-            currentTheme = "/Css/darkmode.css";
+            currentTheme.set("/Css/darkmode.css");
         }
     }
 
     public void applyTheme(Scene scene) {
         if (scene != null) {
-            String themeStylesheet = getClass().getResource(currentTheme).toExternalForm();
+            String themeStylesheet = getClass().getResource(currentTheme.get()).toExternalForm();
             
             scene.getStylesheets().removeIf(stylesheet -> 
                 stylesheet.contains("lightmode.css") || stylesheet.contains("darkmode.css"));
             
             scene.getStylesheets().add(themeStylesheet);
         }
-    }
-    
-    public boolean isDarkMode() {
-        return currentTheme.contains("darkmode");
     }
 }

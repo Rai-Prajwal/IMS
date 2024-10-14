@@ -153,6 +153,6 @@
     -fx-alignment: CENTER;
 }
 
-.button .fontawesome-icon {
-    -fx-fill: #ffffff;
+.table-view .table-icon{
+	-fx-fill: #ffffff;
 }
