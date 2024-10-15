@@ -18,6 +18,7 @@ public class ViewFactory {
     private AnchorPane faqView;
     private AnchorPane settingsView;
     private AnchorPane reportView;
+    private AnchorPane detailsView;
     
     public ViewFactory() {
         this.menuSwitch = new SimpleStringProperty("");
@@ -83,6 +84,16 @@ public class ViewFactory {
             }
         }
         return reportView;
+    }
+    public AnchorPane getDetailsView() {
+        if(detailsView == null) {
+            try {
+                detailsView = new FXMLLoader(getClass().getResource("/Fxml/Details.fxml")).load();
+            }catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return detailsView;
     }
     
     public void showLoginWindow(){

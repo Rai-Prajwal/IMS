@@ -7,6 +7,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import com.ataraxia.IMS.Models.Model;
 import com.ataraxia.IMS.Models.RegistrationModel;
 import com.ataraxia.IMS.Database.Registration;
 import javafx.collections.FXCollections;
@@ -23,6 +24,10 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.Node;
+import com.ataraxia.IMS.Controllers.DetailsController;
 
 public class RegisterController implements Initializable {
 	@FXML public TextField search;
@@ -41,6 +46,7 @@ public class RegisterController implements Initializable {
 	@FXML private TableColumn<RegistrationModel, String> renew;
     private Registration registration;
     private ObservableList<RegistrationModel> registrationData = FXCollections.observableArrayList();
+    public BorderPane main_view;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,8 +54,8 @@ public class RegisterController implements Initializable {
         bindTableData();
         loadData();
         
-        setupIcon(view, FontAwesomeIcon.EYE, "", this::handleViewAction);
-        setupIcon(renew, FontAwesomeIcon.REFRESH, "", this:: handleRenewAction);
+        setupIcon(view, FontAwesomeIcon.EYE, "", this::handleView);
+        setupIcon(renew, FontAwesomeIcon.REFRESH, "", this:: handleRenew);
         
 	}
 	
@@ -67,13 +73,17 @@ public class RegisterController implements Initializable {
         try {
             ResultSet rs = registration.getAllRegistrations();
             while (rs.next()) {
-                registrationData.add(new RegistrationModel(
-                    rs.getString("registration_no"),
-                    rs.getString("institution_name"),
-                    rs.getString("president_name"),
-                    rs.getString("verified_by"),
-                    rs.getLong("phone_no")
-                ));
+            	  registrationData.add(new RegistrationModel(
+                          rs.getString("registration_no"),
+                          rs.getInt("registration_date"),
+                          rs.getString("institution_name"),
+                          rs.getString("president_name"),
+                          rs.getString("address"),
+                          rs.getInt("members_count"),
+                          rs.getInt("expiry_date"),
+                          rs.getString("verified_by"),
+                          rs.getLong("phone_no")
+                      ));
             }
             records.setItems(registrationData);
         } catch (SQLException e) {
@@ -85,7 +95,6 @@ public class RegisterController implements Initializable {
     	column.setCellFactory(col -> new TableCell<RegistrationModel, String>(){
     		private final Button button = new Button ();
     		private final HBox hbox = new HBox(5);
-    		private final FontAwesomeIconView iconView = new FontAwesomeIconView(icon);
     		
     		{
     			FontAwesomeIconView iconView = new FontAwesomeIconView(icon);
@@ -112,11 +121,24 @@ public class RegisterController implements Initializable {
     	});
     }
     
-    private void handleViewAction(javafx.event.ActionEvent event) {
-    
+    private void handleView(javafx.event.ActionEvent event) {
+    	int selectedIndex = records.getSelectionModel().getSelectedIndex();
+    	
+    	if(selectedIndex >= 0) {
+    		RegistrationModel selectedRegistration = records.getItems().get(selectedIndex);
+    		Node detailsView = Model.getInstance().getViewFactory().getDetailsView();
+    		if(detailsView != null) {
+    			DetailsController detailsController = (DetailsController) detailsView.getUserData();
+    			detailsController.setRegistrationData(selectedRegistration);
+    			
+    			main_view.setCenter(detailsView);
+    		}else {
+    			System.err.println("DetailsView not found.");
+    		}
+    	}
     }
     
-    private void handleRenewAction(javafx.event.ActionEvent event) {
+    private void handleRenew(javafx.event.ActionEvent event) {
     	
     }
     

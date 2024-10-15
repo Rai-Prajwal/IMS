@@ -156,3 +156,7 @@
 .table-view .table-icon{
 	-fx-fill: #ffffff;
 }
+
+.table-view .table-icon:hover{
+	-fx-cursor: hand;
+}
