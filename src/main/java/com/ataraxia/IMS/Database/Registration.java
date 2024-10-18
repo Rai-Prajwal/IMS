@@ -3,7 +3,6 @@ package com.ataraxia.IMS.Database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -32,8 +31,8 @@ public class Registration {
 				"expiry_date INTEGER,"+
 				"verified_by TEXT)";
 		
-		try(Statement stmt = con.createStatement()){
-			stmt.execute(sql);
+		try(PreparedStatement stmt = con.prepareStatement(sql)){
+			stmt.execute();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -45,7 +44,12 @@ public class Registration {
     	String sql = "INSERT INTO registrations (registration_no, registration_date, president_name, " +
     			"institution_name, address, phone_no, members_count, expiry_date, verified_by) " +
     			"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+    	
+    	if(isRegistrationExist(registrationNo)) {
+    		System.out.println("Registration number already exists.");
+    		return;
+    	}
+    	
     	try (PreparedStatement pstmt = con.prepareStatement(sql)) {
     		pstmt.setString(1, registrationNo);
     		pstmt.setInt(2, registrationDate);
@@ -62,12 +66,30 @@ public class Registration {
     	}
     }
     
-    public ResultSet getAllRegistrations() throws SQLException {
-        String sql = "SELECT * FROM registrations";
-        Statement stmt = con.createStatement();
-        return stmt.executeQuery(sql);
+    private boolean isRegistrationExist(String registrationNo) {
+    	String sql = "SELECT registration_no FROM registration WHERE registration_no = ?";
+    	try(PreparedStatement pstmt = con.prepareStatement(sql)){
+    		pstmt.setString(1, registrationNo);
+    		try(ResultSet rs = pstmt.executeQuery()){
+    			return rs.next();
+    		}
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	}
+    	return false;
     }
     
+    public ResultSet getAllRegistrations() {
+    	String sql = "SELECT * FROM registrations";   	
+    	try {
+    		PreparedStatement pstmt = con.prepareStatement(sql);
+    		return pstmt.executeQuery();
+    	}catch (SQLException e) {
+    		e.printStackTrace();
+    	}
+    	return null;
+    }
+
     public void closeConnection() {
         try {
             if (con != null) {

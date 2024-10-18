@@ -122,20 +122,17 @@ public class RegisterController implements Initializable {
     }
     
     private void handleView(javafx.event.ActionEvent event) {
-    	int selectedIndex = records.getSelectionModel().getSelectedIndex();
-    	
-    	if(selectedIndex >= 0) {
-    		RegistrationModel selectedRegistration = records.getItems().get(selectedIndex);
-    		Node detailsView = Model.getInstance().getViewFactory().getDetailsView();
-    		if(detailsView != null) {
-    			DetailsController detailsController = (DetailsController) detailsView.getUserData();
-    			detailsController.setRegistrationData(selectedRegistration);
-    			
-    			main_view.setCenter(detailsView);
-    		}else {
-    			System.err.println("DetailsView not found.");
-    		}
-    	}
+    	RegistrationModel selectedRegistration = records.getSelectionModel().getSelectedItem();
+        if (selectedRegistration != null) {
+            Node detailsView = Model.getInstance().getViewFactory().getDetailsView();
+            if (detailsView != null) {
+                DetailsController detailsController = (DetailsController) detailsView.getUserData();
+                detailsController.setRegistrationData(selectedRegistration);
+                main_view.setCenter(detailsView);
+            } else {
+                System.err.println("DetailsView not found.");
+            }
+        }
     }
     
     private void handleRenew(javafx.event.ActionEvent event) {

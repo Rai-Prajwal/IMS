@@ -76,11 +76,11 @@
             <Text layoutX="30.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Institution Name" AnchorPane.leftAnchor="86.5" AnchorPane.topAnchor="140.0" />
             <TextField fx:id="members_count" layoutX="30.0" layoutY="276.0" styleClass="text-field" AnchorPane.leftAnchor="86.5" AnchorPane.topAnchor="250.0" />
             <Text layoutX="30.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="No. of Members" AnchorPane.leftAnchor="86.5" AnchorPane.topAnchor="220.0" />
-            <TextField fx:id="registration_date" layoutX="407.0" layoutY="100.0" prefHeight="30.0" styleClass="text-field" promptText="dd/mm/yyyy" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="90.0" />
+            <TextField fx:id="registration_date" layoutX="407.0" layoutY="100.0" prefHeight="30.0" promptText="yyyy/mm/dd" styleClass="text-field" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="90.0" />
             <TextField fx:id="president_name" layoutX="736.0" layoutY="100.0" prefHeight="30.0" styleClass="text-field" AnchorPane.leftAnchor="712.5" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="90.0" />
             <Text layoutX="413.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Registration Date" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="60.0" />
             <TextField fx:id="address" layoutX="413.0" layoutY="180.0" prefHeight="30.0" styleClass="text-field" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="170.0" />
-            <TextField fx:id="expiry_date" layoutX="413.0" layoutY="251.0" prefHeight="30.0" styleClass="text-field" promptText="dd/mm/yyyy" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="250.0" />
+            <TextField fx:id="expiry_date" layoutX="413.0" layoutY="251.0" prefHeight="30.0" promptText="yyyy/mm/dd" styleClass="text-field" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="250.0" />
             <TextField fx:id="phone" layoutX="723.0" layoutY="172.0" prefHeight="30.0" styleClass="text-field" AnchorPane.leftAnchor="712.5" AnchorPane.topAnchor="170.0" />
             <TextField fx:id="verified_by" layoutX="723.0" layoutY="251.0" prefHeight="30.0" styleClass="text-field" AnchorPane.leftAnchor="712.5" AnchorPane.topAnchor="250.0" />
             <Text layoutX="723.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="President's Name" AnchorPane.leftAnchor="712.5" AnchorPane.topAnchor="60.0" />
@@ -88,7 +88,7 @@
             <Text layoutX="746.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Verified By" AnchorPane.leftAnchor="712.5" AnchorPane.topAnchor="220.0" />
             <Text layoutX="413.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Address" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="140.0" />
             <Text layoutX="435.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Expiry Date" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="220.0" />
-            <Button fx:id="register" layoutX="453.0" layoutY="324.0" mnemonicParsing="false" prefWidth="224.0" text="Register" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="402.0" />
+            <Button fx:id="register" layoutX="453.0" layoutY="324.0" mnemonicParsing="false" prefWidth="224.0" style="-fx-cursor: hand;" text="Register" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="402.0" />
             <FontAwesomeIconView glyphName="CALENDAR" layoutX="608.0" layoutY="122.0" size="15" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="100.0" />
             <FontAwesomeIconView glyphName="CALENDAR" layoutX="610.0" layoutY="283.0" size="15" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="260.0" />
          </children>
