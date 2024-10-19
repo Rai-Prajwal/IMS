@@ -18,7 +18,7 @@ public class MainController implements Initializable{
 			case"FAQ" -> main_view.setCenter(Model.getInstance().getViewFactory().getFaqView());
 			case"Settings" -> main_view.setCenter(Model.getInstance().getViewFactory().getSettingsView());
 			case"Logout" -> handleLogout();
-			case"Report" -> main_view.setCenter(Model.getInstance().getViewFactory().getReportView());
+			case"DetailsView"  -> main_view.setCenter(Model.getInstance().getViewFactory().getDetailsView());
 			default -> main_view.setCenter(Model.getInstance().getViewFactory().getHomeView());
 			}
 		});

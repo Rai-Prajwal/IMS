@@ -3,6 +3,7 @@ package com.ataraxia.IMS.Controllers;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.ataraxia.IMS.Models.RegistrationModel;
@@ -28,7 +29,7 @@ public class DetailsController implements Initializable{
 	@FXML public TextField reg_date;
 	@FXML public TextField exp_date;
 	@FXML public TextField verified_by;
-	@FXML public TextField notes;
+	@FXML public TextArea notes;
 	private RegistrationModel registrationData;
 	
 	@Override

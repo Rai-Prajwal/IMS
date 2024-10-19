@@ -25,7 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import javafx.geometry.Pos;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.Node;
 import com.ataraxia.IMS.Controllers.DetailsController;
 
@@ -46,16 +46,14 @@ public class RegisterController implements Initializable {
 	@FXML private TableColumn<RegistrationModel, String> renew;
     private Registration registration;
     private ObservableList<RegistrationModel> registrationData = FXCollections.observableArrayList();
-    public BorderPane main_view;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
         registration = new Registration();
         bindTableData();
         loadData();
-        
-        setupIcon(view, FontAwesomeIcon.EYE, "", this::handleView);
-        setupIcon(renew, FontAwesomeIcon.REFRESH, "", this:: handleRenew);
+        setupViewColumn();
+        setupRenewColumn();
         
 	}
 	
@@ -91,52 +89,88 @@ public class RegisterController implements Initializable {
         }
     }
     
-    private void setupIcon(TableColumn<RegistrationModel, String> column, FontAwesomeIcon icon, String text, javafx.event.EventHandler<javafx.event.ActionEvent> action) {
-    	column.setCellFactory(col -> new TableCell<RegistrationModel, String>(){
-    		private final Button button = new Button ();
-    		private final HBox hbox = new HBox(5);
-    		
-    		{
-    			FontAwesomeIconView iconView = new FontAwesomeIconView(icon);
+    private void setupViewColumn() {
+        view.setCellFactory(col -> new TableCell<RegistrationModel, String>() {
+            private final Button button = new Button();
+            {
+                FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.EYE);
                 iconView.setStyle("-fx-font-family: FontAwesome; -fx-font-size: 20px;");
                 iconView.getStyleClass().add("table-icon");
                 button.setGraphic(iconView);
-                button.setOnAction(action);
                 button.setStyle("-fx-background-color: transparent;");
-                hbox.getChildren().addAll(button);
-                hbox.setAlignment(Pos.CENTER);
-            
-    		}
-            
-    		@Override
-    		protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
+                button.setOnAction(event -> handleView(getTableRow().getItem()));
+            }
 
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    setGraphic(hbox);
+                    setGraphic(button);
                 }
-         }
-    	});
+            }
+        });
     }
-    
-    private void handleView(javafx.event.ActionEvent event) {
-    	RegistrationModel selectedRegistration = records.getSelectionModel().getSelectedItem();
-        if (selectedRegistration != null) {
-            Node detailsView = Model.getInstance().getViewFactory().getDetailsView();
-            if (detailsView != null) {
+
+    private void setupRenewColumn() {
+        renew.setCellFactory(col -> new TableCell<RegistrationModel, String>() {
+            private final Button button = new Button();
+            {
+                FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.REFRESH);
+                iconView.setStyle("-fx-font-family: FontAwesome; -fx-font-size: 20px;");
+                iconView.getStyleClass().add("table-icon");
+                button.setGraphic(iconView);
+                button.setStyle("-fx-background-color: transparent;");
+                button.setOnAction(event -> handleRenew(getTableRow().getItem()));
+            }
+
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(button);
+                }
+            }
+        });
+    }
+
+    private void handleView(RegistrationModel registrationModel) {
+        if (registrationModel != null) {
+            AnchorPane detailsView = Model.getInstance().getViewFactory().getDetailsView();
+            
+            if (detailsView != null && detailsView.getUserData() instanceof DetailsController) {
                 DetailsController detailsController = (DetailsController) detailsView.getUserData();
-                detailsController.setRegistrationData(selectedRegistration);
-                main_view.setCenter(detailsView);
+                detailsController.setRegistrationData(registrationModel);
+
+                Model.getInstance().getViewFactory().getMenuSwitch().set("DetailsView");
             } else {
-                System.err.println("DetailsView not found.");
+                System.err.println("DetailsView not found or controller not set.");
             }
         }
     }
-    
-    private void handleRenew(javafx.event.ActionEvent event) {
-    	
+
+    private DetailsController findDetailsController(AnchorPane detailsView) {
+        // Option 1: If the controller is set as UserData
+        if (detailsView.getUserData() instanceof DetailsController) {
+            return (DetailsController) detailsView.getUserData();
+        }
+        
+        // Option 2: If the controller is not set as UserData, try to find it in the children
+        for (javafx.scene.Node node : detailsView.getChildren()) {
+            if (node.getUserData() instanceof DetailsController) {
+                return (DetailsController) node.getUserData();
+            }
+        }
+        
+        // If we can't find the controller, log an error or throw an exception
+        System.err.println("DetailsController not found!");
+        return null;
+    }
+
+    private void handleRenew(RegistrationModel registrationModel) {
     }
     
     public void closeDatabase() {

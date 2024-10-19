@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import com.ataraxia.IMS.Controllers.MainController;
 import com.ataraxia.IMS.Controllers.SettingsController;
 import com.ataraxia.IMS.Models.Model;
+import com.ataraxia.IMS.Controllers.DetailsController;
+import java.io.IOException;
 
 public class ViewFactory {
     private final StringProperty menuSwitch;
@@ -17,7 +19,6 @@ public class ViewFactory {
     private AnchorPane registerView;
     private AnchorPane faqView;
     private AnchorPane settingsView;
-    private AnchorPane reportView;
     private AnchorPane detailsView;
     
     public ViewFactory() {
@@ -75,21 +76,14 @@ public class ViewFactory {
         return settingsView;
     }
     
-    public AnchorPane getReportView() {
-        if(reportView == null) {
-            try {
-                reportView = new FXMLLoader(getClass().getResource("/Fxml/Report.fxml")).load();
-            }catch(Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return reportView;
-    }
     public AnchorPane getDetailsView() {
-        if(detailsView == null) {
+        if (detailsView == null) {
             try {
-                detailsView = new FXMLLoader(getClass().getResource("/Fxml/Details.fxml")).load();
-            }catch(Exception e) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Details.fxml"));
+                detailsView = loader.load();
+                DetailsController controller = loader.getController();
+                detailsView.setUserData(controller);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

@@ -15,7 +15,6 @@
             <VBox layoutX="43.0" layoutY="23.0" prefHeight="140.0" prefWidth="100.0" stylesheets="@../Css/menu.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <FontAwesomeIconView glyphName="BOOK" size="80" styleClass="icons" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IMS" />
                </children>
                <styleClass>
                   <String fx:value="container" />
@@ -56,15 +55,6 @@
                </styleClass>
             </VBox>
             <VBox layoutY="500.0" prefHeight="140.0" prefWidth="100.0" stylesheets="@../Css/menu.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Bug/Suggestions" />
-                  <Label text="use this to send Suggestions or Report Bugs" />
-                  <Button fx:id="report" mnemonicParsing="false" text="Report">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="SEND" size="20" />
-                     </graphic>
-                  </Button>
-               </children>
                <styleClass>
                   <String fx:value="container" />
                   <String fx:value="report_container" />
