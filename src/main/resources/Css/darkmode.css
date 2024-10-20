@@ -11,8 +11,16 @@
 .text{
 	-fx-fill: #ffffff;
 }
+
 .title {
-    -fx-font-size: 3em;
+    -fx-font-size: 2.5em;
+    -fx-font-weight: bold;
+    -fx-fill: #ffffff;
+}
+
+.title2 {
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
     -fx-fill: #ffffff;
 }
 

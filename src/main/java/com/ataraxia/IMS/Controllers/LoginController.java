@@ -17,7 +17,6 @@ public class LoginController implements Initializable {
 	public TextField username;
 	public PasswordField password;
 	public CheckBox remember_me;
-	public Label forgot_password;
 	public Button login;
 	public Label error;
 	
@@ -38,7 +37,6 @@ public class LoginController implements Initializable {
         try {
             boolean isAuthenticated = Usersdb.authenticateUser(enteredUsername, enteredPassword);
             if (isAuthenticated) {
-                // Successful login
                 Model.getInstance().setCurrentUser(enteredUsername);
                 Stage stage = (Stage) error.getScene().getWindow();
                 Model.getInstance().getViewFactory().closeStage(stage);

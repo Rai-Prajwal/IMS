@@ -64,12 +64,6 @@
 	-fx-effect: dropshadow(three-pass-box, #AAAAAA, 5, 0, 0, 4);	
 }
 
-.registration_title{
-	-fx-font-weight: bold;
-	-fx-font-size: 2em;
-	-fx-fill: #ffffff;
-}
-
 .registration_box{
 	-fx-border-radius: 15;
 	-fx-border-width: 10;
