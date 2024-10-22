@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 
 public class Registration {
 	private Connection con;
@@ -22,13 +23,13 @@ public class Registration {
 	private void createTable() {
 		String sql ="CREATE TABLE IF NOT EXISTS registrations("+
 				"registration_no TEXT PRIMARY KEY,"+
-				"registration_date INTEGER,"+
+				"registration_date TEXT,"+
 				"president_name TEXT,"+
 				"institution_name TEXT,"+
 				"address TEXT,"+
 				"phone_no INTEGER,"+
 				"members_count INTEGER,"+
-				"expiry_date INTEGER,"+
+				"expiry_date TEXT,"+
 				"verified_by TEXT)";
 		
 		try(PreparedStatement stmt = con.prepareStatement(sql)){
@@ -38,9 +39,9 @@ public class Registration {
 		}
 	}
 	
-    public void insertRegistration(String registrationNo, int registrationDate, String presidentName,
+    public void insertRegistration(String registrationNo, LocalDate registrationDate, String presidentName,
             String institutionName, String address, long phoneNo,
-            int membersCount, int expiryDate, String verifiedBy) {
+            int membersCount, LocalDate expiryDate, String verifiedBy) {
     	String sql = "INSERT INTO registrations (registration_no, registration_date, president_name, " +
     			"institution_name, address, phone_no, members_count, expiry_date, verified_by) " +
     			"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -52,13 +53,13 @@ public class Registration {
     	
     	try (PreparedStatement pstmt = con.prepareStatement(sql)) {
     		pstmt.setString(1, registrationNo);
-    		pstmt.setInt(2, registrationDate);
+    		pstmt.setString(2, registrationDate.toString());
     		pstmt.setString(3, presidentName);
     		pstmt.setString(4, institutionName);
     		pstmt.setString(5, address);
     		pstmt.setLong(6, phoneNo);
     		pstmt.setInt(7, membersCount);
-    		pstmt.setInt(8, expiryDate);
+    		pstmt.setString(8, expiryDate.toString());
     		pstmt.setString(9, verifiedBy);
     		pstmt.executeUpdate();
     	} catch (SQLException e) {
@@ -67,7 +68,7 @@ public class Registration {
     }
     
     private boolean isRegistrationExist(String registrationNo) {
-    	String sql = "SELECT registration_no FROM registration WHERE registration_no = ?";
+    	String sql = "SELECT registration_no FROM registrations WHERE registration_no = ?";
     	try(PreparedStatement pstmt = con.prepareStatement(sql)){
     		pstmt.setString(1, registrationNo);
     		try(ResultSet rs = pstmt.executeQuery()){
