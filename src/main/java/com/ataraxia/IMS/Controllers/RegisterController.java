@@ -73,12 +73,12 @@ public class RegisterController implements Initializable {
             while (rs.next()) {
             	  registrationData.add(new RegistrationModel(
                           rs.getString("registration_no"),
-                          rs.getInt("registration_date"),
+                          rs.getDate("registration_date"),
                           rs.getString("institution_name"),
                           rs.getString("president_name"),
                           rs.getString("address"),
                           rs.getInt("members_count"),
-                          rs.getInt("expiry_date"),
+                          rs.getDate("expiry_date"),
                           rs.getString("verified_by"),
                           rs.getLong("phone_no")
                       ));

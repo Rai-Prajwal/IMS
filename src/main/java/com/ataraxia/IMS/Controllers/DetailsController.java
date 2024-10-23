@@ -46,8 +46,8 @@ public class DetailsController implements Initializable{
 		phone.setText(Long.toString(registrationData.getPhoneNo()));
 		address.setText(registrationData.getAddress());
 		members_count.setText(Integer.toString(registrationData.getMembersCount()));
-		reg_date.setText(Integer.toString(registrationData.getRegistrationDate()));
-		exp_date.setText(Integer.toString(registrationData.getExpiryDate()));
+		reg_date.setText(registrationData.getFormattedRegistrationDate());
+		exp_date.setText(registrationData.getFormattedExpiryDate());
 		verified_by.setText(registrationData.getVerifiedBy());
 		
 	}

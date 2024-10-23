@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import com.ataraxia.IMS.Utils.DateUtils;
 
 public class Registration {
 	private Connection con;
@@ -23,13 +24,13 @@ public class Registration {
 	private void createTable() {
 		String sql ="CREATE TABLE IF NOT EXISTS registrations("+
 				"registration_no TEXT PRIMARY KEY,"+
-				"registration_date TEXT,"+
+				"registration_date Date,"+
 				"president_name TEXT,"+
 				"institution_name TEXT,"+
 				"address TEXT,"+
 				"phone_no INTEGER,"+
 				"members_count INTEGER,"+
-				"expiry_date TEXT,"+
+				"expiry_date Date,"+
 				"verified_by TEXT)";
 		
 		try(PreparedStatement stmt = con.prepareStatement(sql)){
@@ -53,13 +54,13 @@ public class Registration {
     	
     	try (PreparedStatement pstmt = con.prepareStatement(sql)) {
     		pstmt.setString(1, registrationNo);
-    		pstmt.setString(2, registrationDate.toString());
+    		pstmt.setDate(2, DateUtils.localDateToSqlDate(registrationDate));
     		pstmt.setString(3, presidentName);
     		pstmt.setString(4, institutionName);
     		pstmt.setString(5, address);
     		pstmt.setLong(6, phoneNo);
     		pstmt.setInt(7, membersCount);
-    		pstmt.setString(8, expiryDate.toString());
+    		pstmt.setDate(8, DateUtils.localDateToSqlDate(expiryDate));
     		pstmt.setString(9, verifiedBy);
     		pstmt.executeUpdate();
     	} catch (SQLException e) {
