@@ -16,6 +16,10 @@ import java.time.format.DateTimeParseException;
 import javafx.scene.control.Alert;
 import java.util.List;
 import java.util.Arrays;
+import com.ataraxia.IMS.Utils.DateUtils;
+import com.github.binodnme.dateconverter.utils.DateBS;
+
+import java.util.Date;
 
 public class HomeController implements Initializable {
 	@FXML public Text username;
@@ -46,9 +50,20 @@ public class HomeController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		updateDateLabel();
 		registration = new Registration();
 		setupRegistrationButton();
 		setupDateFieldPrompts();
+	}
+	
+	private void updateDateLabel() {
+		LocalDate today = LocalDate.now();
+	
+	    DateBS todayBS = DateUtils.convertADToBS(today);
+	    
+	    String formattedBSDate = todayBS.getYear() + "/" + todayBS.getMonth() + "/" + todayBS.getDay();
+	    
+		date.setText("Date: "+formattedBSDate);
 	}
 	
 	private void setupRegistrationButton() {
