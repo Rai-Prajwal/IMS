@@ -3,6 +3,7 @@ package com.ataraxia.IMS.Database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
@@ -91,7 +92,25 @@ public class Registration {
     	}
     	return null;
     }
+    
+ // Total registrations count
+    public int getTotalRegistrations() throws SQLException {
+        String sql = "SELECT COUNT(*) AS total FROM registrations";
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            return rs.getInt("total");
+        }
+    }
 
+    // Expired registrations count
+    public int getExpiredRegistrationsCount() throws SQLException {
+        String sql = "SELECT COUNT(*) AS expired FROM registrations WHERE expiry_date < DATE('now')";
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            return rs.getInt("expired");
+        }
+    }
+    
     public void closeConnection() {
         try {
             if (con != null) {

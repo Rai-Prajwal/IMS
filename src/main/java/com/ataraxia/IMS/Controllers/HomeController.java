@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import com.ataraxia.IMS.Models.Model;
 import com.ataraxia.IMS.Database.Registration;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Arrays;
 import com.ataraxia.IMS.Utils.DateUtils;
 import com.ataraxia.Models.BSDate;
+import java.sql.SQLException;
 
 public class HomeController implements Initializable {
 	@FXML public Text username;
@@ -48,10 +50,17 @@ public class HomeController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		user();
 		updateDateLabel();
 		registration = new Registration();
+		total();
+		totalExp();
 		setupRegistrationButton();
 		setupDateFieldPrompts();
+	}
+	
+	private void user() {
+		username.setText(Model.getInstance().getCurrentUser());
 	}
 	
 	private void updateDateLabel() {
@@ -61,6 +70,21 @@ public class HomeController implements Initializable {
         date.setText("Date: " + formattedBSDate);
 	}
 	
+	private void total() {
+		try {
+		    list_no.setText(String.valueOf(registration.getTotalRegistrations()));
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		}
+	}
+	
+	private void totalExp() {
+		try {
+		    expired_no.setText(String.valueOf(registration.getExpiredRegistrationsCount()));
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		}
+	}
 	private void setupRegistrationButton() {
 		register.setOnAction(event ->insertRegistration());
 	}
@@ -205,4 +229,6 @@ public class HomeController implements Initializable {
 			registration.closeConnection();
 		}
 	}
+	
+	
 }
