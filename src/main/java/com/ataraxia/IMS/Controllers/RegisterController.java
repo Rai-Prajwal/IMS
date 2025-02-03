@@ -67,27 +67,33 @@ public class RegisterController implements Initializable {
 	}
     
 
-    private void loadData() {
-        try {
-            ResultSet rs = registration.getAllRegistrations();
-            while (rs.next()) {
-            	  registrationData.add(new RegistrationModel(
-                          rs.getString("registration_no"),
-                          rs.getDate("registration_date"),
-                          rs.getString("institution_name"),
-                          rs.getString("president_name"),
-                          rs.getString("address"),
-                          rs.getInt("members_count"),
-                          rs.getDate("expiry_date"),
-                          rs.getString("verified_by"),
-                          rs.getLong("phone_no")
-                      ));
-            }
-            records.setItems(registrationData);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+	private void loadData() {
+	    try {
+	        ResultSet rs = registration.getAllRegistrations();
+	        if(rs != null) {
+	            while (rs.next()) {
+	                registrationData.add(new RegistrationModel(
+	                    rs.getString("registration_no"),
+	                    rs.getInt("registration_year"),
+	                    rs.getInt("registration_month"),
+	                    rs.getInt("registration_day"),
+	                    rs.getString("president_name"),
+	                    rs.getString("institution_name"),
+	                    rs.getString("address"),
+	                    rs.getInt("members_count"),
+	                    rs.getInt("expiry_year"),
+	                    rs.getInt("expiry_month"),
+	                    rs.getInt("expiry_day"),
+	                    rs.getString("verified_by"),
+	                    rs.getLong("phone_no")
+	                ));
+	            }
+	            records.setItems(registrationData);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
     
     private void setupViewColumn() {
         view.setCellFactory(col -> new TableCell<RegistrationModel, String>() {

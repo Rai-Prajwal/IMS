@@ -17,18 +17,18 @@ public class RegistrationModel {
     private Long phoneNo;
     private CheckBox selectCheckBox;
 
-    public RegistrationModel(String registrationNo, Date registrationDate, String institutionName, String presidentName, String address, int membersCount, Date expiryDate, String verifiedBy, Long phoneNo) {
-        this.registrationNo = registrationNo;
-        this.registrationDate = DateUtils.sqlDateToLocalDate(registrationDate);
-        this.institutionName = institutionName;
-        this.presidentName = presidentName;
-        this.address = address;
-        this.membersCount = membersCount;
-        this.expiryDate = DateUtils.sqlDateToLocalDate(expiryDate);
-        this.verifiedBy = verifiedBy;
-        this.phoneNo = phoneNo;
-        this.selectCheckBox = new CheckBox();
-    }
+    public RegistrationModel(String registrationNo, int regYear, int regMonth, int regDay, String presidentName, String institutionName, String address, int membersCount, int expYear, int expMonth, int expDay, String verifiedBy, long phoneNo) {
+    	this.registrationNo = registrationNo;
+    	this.registrationDate = LocalDate.of(regYear, regMonth, regDay);
+    	this.institutionName = institutionName;
+    	this.presidentName = presidentName;
+    	this.address = address;
+    	this.membersCount = membersCount;
+    	this.expiryDate = LocalDate.of(expYear, expMonth, expDay);
+    	this.verifiedBy = verifiedBy;
+    	this.phoneNo = phoneNo;
+    	this.selectCheckBox = new CheckBox();
+}
 
     // Getters
     public String getRegistrationNo() { return registrationNo; }
